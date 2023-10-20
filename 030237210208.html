@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>NGUYỄN THỊ THÚY VI- KIỂM TRA SỐ NGUYÊN TỐ</title>
+</head>
+<body>
+    <h1>KIỂM TRA SỐ NGUYÊN TỐ</h1>
+
+    <script>
+        function isPrime(number) {
+            if (number <= 1) return false;
+            if (number <= 3) return true;
+            if (number % 2 === 0 || number % 3 === 0) return false;
+
+            for (let i = 5; i * i <= number; i += 6) {
+                if (number % i === 0 || number % (i + 2) === 0) return false;
+            }
+
+            return true;
+        }
+
+        function checkPrimes() {
+            const inputNumbers = [];
+            for (let i = 0; i < 10; i++) {
+                const inputValue = prompt(`Nhập số nguyên thứ ${i + 1}:`);
+                const number = parseInt(inputValue);
+
+                if (isNaN(number)) {
+                    alert("Vui lòng nhập một số nguyên.");
+                    i--;
+                } else {
+                    inputNumbers.push(number);
+                }
+            }
+
+            const primeNumbers = inputNumbers.filter(isPrime);
+            
+            if (primeNumbers.length > 0) {
+                document.write("<h2>Các số nguyên tố trong danh sách là: " + primeNumbers.join(", ") + "</h2>");
+            } else {
+                document.write("<h2>Không có số nguyên tố nào trong danh sách.</h2>");
+            }
+        }
+
+        checkPrimes();
+    </script>
+</body>
+</html>
